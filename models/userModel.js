@@ -7,7 +7,7 @@ const userSchema = new Schema({
   username: {
     type: String,
     lowercase: true,
-    minLength: 2,
+    minLength: 4,
     trim: true,
     required: [true, "You need a username!"],
     unique: true,
@@ -15,7 +15,7 @@ const userSchema = new Schema({
   password: {
     type: String,
     lowercase: true,
-    minLength: 5,
+    minLength: 4,
     trim: true,
     required: [true, "You need a password!"],
   },

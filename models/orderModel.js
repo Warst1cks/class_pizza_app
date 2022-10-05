@@ -17,17 +17,17 @@ const OrderSchema = new Schema({
     {
       name: {
         type: String,
-        required: [true, "You need a pizza name"],
+        required: [true, "You need a pizza name."],
         trim: true,
       },
       price: {
         type: Number,
-        required: [true, "You need a price"],
+        required: [true, "You need a price."],
       },
       size: { type: String, enum: ["m", "s", "l"] },
       quantity: {
         type: Number,
-        required: [true, "We need to know the quantity."],
+        required: [true, "We need to know the quantity you need."],
       },
     },
   ],
