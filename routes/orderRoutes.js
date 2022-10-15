@@ -5,13 +5,7 @@ const { authenticateUser, authorizeAdmin } = require("../authentication");
 
 const orderRouter = express.Router();
 
-// TODO: C R U D operations on /orders route
-
 orderRouter.use(authenticateUser);
-
-// CREATE
-
-// ADD A NEW ORDER
 
 orderRouter.post("/", async (req, res) => {
   try {
@@ -39,9 +33,6 @@ orderRouter.post("/", async (req, res) => {
 
 orderRouter.use(authorizeAdmin);
 
-// READ
-
-// GETS ALL ORDERS
 orderRouter.get("/", async (req, res) => {
   try {
     const query = req.query;
@@ -52,11 +43,11 @@ orderRouter.get("/", async (req, res) => {
       ordersQuery = orderModel.find({});
     }
 
-    // Sorting
+    // SORTING
     if (query.sort) {
       ordersQuery.sort(query.sort);
     }
-    // Pagination
+    // PAGINATION
     const page = +query.page || 1;
     const limit = 3;
     const skip = (page - 1) * limit;
