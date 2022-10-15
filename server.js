@@ -5,7 +5,7 @@ dotenv.config();
 
 const app = require("./app");
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 const HOST = process.env.HOST || "localhost";
 const DB_CONNECTION_URI =
   process.env.DB_CONNECTION_URI || "mongodb://localhost:27017/pizza_app";
