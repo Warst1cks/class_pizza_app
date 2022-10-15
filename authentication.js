@@ -1,7 +1,6 @@
 const userModel = require("./models/userModel");
 
 exports.authenticateUser = async function (req, res, next) {
-  // Using Basic Authorization
   const authenticationHeader = req.headers.authorization;
   if (!authenticationHeader) {
     return res.status(401).json({

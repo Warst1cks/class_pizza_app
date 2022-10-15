@@ -43,11 +43,9 @@ orderRouter.get("/", async (req, res) => {
       ordersQuery = orderModel.find({});
     }
 
-    // SORTING
     if (query.sort) {
       ordersQuery.sort(query.sort);
     }
-    // PAGINATION
     const page = +query.page || 1;
     const limit = 3;
     const skip = (page - 1) * limit;
@@ -68,8 +66,6 @@ orderRouter.get("/", async (req, res) => {
   }
 });
 
-// GET ORDER BY ID
-
 orderRouter.get("/:orderId", async (req, res) => {
   try {
     const orderId = req.params.orderId;
@@ -86,7 +82,6 @@ orderRouter.get("/:orderId", async (req, res) => {
   }
 });
 
-// UPDATE
 orderRouter.patch("/:orderId", async (req, res) => {
   try {
     const orderId = req.params.orderId;
@@ -123,7 +118,6 @@ orderRouter.patch("/:orderId", async (req, res) => {
   }
 });
 
-// DELETE
 orderRouter.delete("/:orderId", async (req, res) => {
   try {
     const orderId = req.params.orderId;

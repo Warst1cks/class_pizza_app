@@ -1,7 +1,6 @@
 const passport = require("passport");
 const localStrategy = require("passport-local").Strategy;
 const UserModel = require("../models/userModel");
-
 const JWTstrategy = require("passport-jwt").Strategy;
 const ExtractJWT = require("passport-jwt").ExtractJwt;
 require("dotenv").config();
@@ -11,8 +10,7 @@ passport.use(
     {
       secretOrKey: "mynamesaresamuelwarrieuduakfromlagosojuelegba",
 
-      // jwtFromRequest: ExtractJWT.fromUrlQueryParameter('secret_token')
-      jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(), // Use this if you are using Bearer token
+      jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
     },
     async (token, done) => {
       try {
@@ -24,10 +22,6 @@ passport.use(
   )
 );
 
-
-// This middleware saves the information provided by the user to the database,
-// and then sends the user information to the next middleware if successful.
-// Otherwise, it reports an error.
 passport.use(
   "signup",
   new localStrategy(
@@ -47,9 +41,6 @@ passport.use(
   )
 );
 
-// This middleware authenticates the user based on the email and password provided.
-// If the user is found, it sends the user information to the next middleware.
-// Otherwise, it reports an error.
 passport.use(
   "login",
   new localStrategy(

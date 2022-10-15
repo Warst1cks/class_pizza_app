@@ -19,7 +19,6 @@ const userSchema = new Schema({
     trim: true,
     required: [true, "You need a password!"],
   },
-  
 });
 
 userSchema.pre("save", async function (next) {
@@ -30,19 +29,12 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-// You will also need to make sure that the user trying to log in has the correct credentials. Add the following new method:
 userSchema.methods.isValidPassword = async function (password) {
   const user = this;
   const compare = await bcrypt.compare(password, user.password);
 
   return compare;
 };
-
-
-
-
-
-
 
 const userModel = mongoose.model("User", userSchema);
 module.exports = userModel;

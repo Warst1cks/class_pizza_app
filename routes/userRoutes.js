@@ -2,7 +2,6 @@ const express = require("express");
 const passport = require("passport");
 
 const userModel = require("../models/userModel");
-// const { authenticateUser, authorizeAdmin } = ("../authentication");
 
 const authRouter = express.Router();
 
@@ -32,9 +31,6 @@ authRouter.post("/login", async (req, res, next) => {
         if (error) return next(error);
 
         const body = { _id: user._id, username: user.username };
-        //You store the id and email in the payload of the JWT.
-        // You then sign the token with a secret or key (JWT_SECRET), and send back the token to the user.
-        // DO NOT STORE PASSWORDS IN THE JWT!
         const token = jwt.sign({ user: body }, process.env.JWT_SECRET);
 
         return res.json({ token });
@@ -46,12 +42,6 @@ authRouter.post("/login", async (req, res, next) => {
 });
 
 module.exports = authRouter;
-
-
-
-
-
-
 
 // TODO: C R U D operations on /users route
 
